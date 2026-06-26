@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.blgeomatics.co.za/sitemap-index.xml
+Sitemap: https://lemarboks.github.io/biff_lewis_geomatics/sitemap-index.xml
