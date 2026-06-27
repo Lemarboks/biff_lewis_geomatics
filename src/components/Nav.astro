@@ -1,0 +1,83 @@
+---
+import NavLogo from './NavLogo.astro';
+import { url } from '../utils/url';
+
+const { pathname } = Astro.url;
+
+function isActive(href: string): boolean {
+  if (href === url('/')) return pathname === url('/') || pathname === url('/').replace(/\/$/, '');
+  return pathname === href || pathname.startsWith(href + '/');
+}
+
+const links = [
+  { href: url('/'),         label: 'Home' },
+  { href: url('/about'),    label: 'About' },
+  { href: url('/services'), label: 'Services' },
+  { href: url('/gallery'),  label: 'Gallery' },
+  { href: url('/contact'),  label: 'Contact' },
+];
+---
+
+<nav class="navbar" id="navbar">
+  <div class="container">
+    <a href={url('/')} class="nav-brand" aria-label="Biff Lewis Geomatics Professional Land Surveyors home">
+      <NavLogo variant="header" />
+      <div class="nav-brand-text">
+        <div class="brand-name">Biff Lewis Geomatics</div>
+        <div class="brand-sub">Professional Land Surveyors</div>
+      </div>
+    </a>
+
+    <nav class="nav-menu" id="navMenu" aria-label="Main navigation">
+      {links.map(({ href, label }) => (
+        <a
+          href={href}
+          class:list={[{ active: isActive(href) }]}
+          aria-current={isActive(href) ? 'page' : undefined}
+        >
+          {label}
+        </a>
+      ))}
+    </nav>
+
+    <a href={url('/contact')} class="btn btn--red nav-cta">Get a Quote</a>
+
+    <button
+      class="hamburger"
+      id="hamburger"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="navMenu"
+      type="button"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</nav>
+
+<script>
+  const hamburger = document.getElementById('hamburger') as HTMLButtonElement | null;
+  const navbar    = document.getElementById('navbar') as HTMLElement | null;
+  const navMenu   = document.getElementById('navMenu') as HTMLElement | null;
+
+  if (hamburger && navbar && navMenu) {
+    hamburger.addEventListener('click', () => {
+      const isOpen = navbar.classList.toggle('mobile-open');
+      hamburger.setAttribute('aria-expanded', String(isOpen));
+      hamburger.setAttribute(
+        'aria-label',
+        isOpen ? 'Close navigation menu' : 'Open navigation menu'
+      );
+    });
+
+    navMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navbar.classList.remove('mobile-open');
+        hamburger.setAttribute('aria-expanded', 'false');
+        hamburger.setAttribute('aria-label', 'Open navigation menu');
+      });
+    });
+  }
+</script>

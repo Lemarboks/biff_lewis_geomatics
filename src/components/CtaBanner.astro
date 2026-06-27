@@ -1,0 +1,21 @@
+---
+interface Props {
+  heading: string;
+  body: string;
+  btn1?: { text: string; href: string };
+  btn2?: { text: string; href: string };
+}
+const { heading, body, btn1, btn2 } = Astro.props;
+---
+<div class="cta-banner">
+  <div class="container">
+    <h2>{heading}</h2>
+    <p>{body}</p>
+    <div class="btn-group">
+      <slot name="buttons">
+        {btn1 && <a href={btn1.href} class="btn btn--white">{btn1.text}</a>}
+        {btn2 && <a href={btn2.href} class="btn btn--outline-white">{btn2.text}</a>}
+      </slot>
+    </div>
+  </div>
+</div>

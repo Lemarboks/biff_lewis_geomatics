@@ -1,0 +1,505 @@
+---
+import Layout from '../layouts/Layout.astro';
+import CtaBanner from '../components/CtaBanner.astro';
+import { url } from '../utils/url';
+import heroMainSrc from '../assets/gallery/hero-main.jpg';
+---
+
+<Layout
+  title="Biff Lewis Geomatics | Professional Land Surveyors Cape Town"
+  description="Biff Lewis Geomatics – Professional Land Surveyors in Cape Town and the Western Cape. Property boundary surveys, engineering, CAD, 3D modelling, and geomatics services. Call +27 21 442 3480."
+  keywords="land surveyor Cape Town, land surveyor Western Cape, property boundary survey Cape Town, cadastral surveyor Cape Town, engineering survey Cape Town, professional land surveyors near me, Biff Lewis Geomatics"
+>
+
+  <!-- ── HERO ── -->
+  <section class="hero">
+    <img class="hero-photo" src={heroMainSrc.src} alt="" aria-hidden="true" loading="eager" decoding="async" />
+    <div class="hero-bg-lines" aria-hidden="true"></div>
+    <div class="hero-red-shape" aria-hidden="true"></div>
+    <div class="container">
+      <div class="hero-inner">
+        <div class="hero-eyebrow">
+          <span class="eyebrow-dot" aria-hidden="true"></span>
+          Western Cape's Trusted Geomatics Specialists
+        </div>
+        <h1>
+          Professional Land Surveyors<br />
+          in <span>Cape Town</span> &amp; the Western Cape
+        </h1>
+        <p class="hero-sub">
+          Professional land surveying across Cape Town and the Western Cape — we listen to your needs, define the problem, and deliver accurate, certified results.
+        </p>
+        <div class="hero-actions">
+          <a href={url('/contact')} class="btn btn--red">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.4 1.15 2 2 0 012 .5h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+            </svg>
+            Request a Quote
+          </a>
+          <a href={url('/services')} class="btn btn--outline-white">View Our Services &rarr;</a>
+        </div>
+        <div class="hero-trust" aria-label="Key statistics">
+          <div class="trust-item"><div class="t-num">500+</div><div class="t-label">Projects Completed</div></div>
+          <div class="trust-item"><div class="t-num">30+</div><div class="t-label">Years Experience</div></div>
+          <div class="trust-item"><div class="t-num">200+</div><div class="t-label">Satisfied Clients</div></div>
+          <div class="trust-item"><div class="t-num">SAGC</div><div class="t-label">Registered Surveyors</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── STATS BAR ── -->
+  <div class="stats-bar" aria-label="Company highlights">
+    <div class="container">
+      <div class="stat-cell">
+        <div class="stat-ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <div><div class="stat-num">500+</div><div class="stat-desc">Projects Completed</div></div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <div><div class="stat-num">30+</div><div class="stat-desc">Years Experience</div></div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+        </div>
+        <div><div class="stat-num">200+</div><div class="stat-desc">Satisfied Clients</div></div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+        </div>
+        <div><div class="stat-num">SAGC</div><div class="stat-desc">Professional Registration</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── SERVICES OVERVIEW ── -->
+  <section class="section" aria-labelledby="services-heading">
+    <div class="container">
+      <span class="label">Our Services</span>
+      <h2 class="section-title" id="services-heading">Land Surveying for Every Project</h2>
+      <p class="section-sub">
+        From single property boundary disputes to large-scale development projects — we deliver
+        accurate, professionally certified results across Cape Town and the Western Cape.
+      </p>
+
+      <div class="services-grid">
+        <div class="card">
+          <div class="card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+          <h3>Property Ownership</h3>
+          <p>Establish or confirm property lines with precision. Essential before buying, selling, building, or resolving boundary disputes.</p>
+          <div class="tags">
+            <span class="tag">Property Owners</span>
+            <span class="tag">Attorneys</span>
+            <span class="tag">Estate Agents</span>
+          </div>
+          <a href={url('/services')} class="card-link">Property Ownership &rarr;</a>
+        </div>
+
+        <div class="card">
+          <div class="card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>
+          </div>
+          <h3>Measurement Services</h3>
+          <p>Precise on-site measurements guiding builders, engineers, and architects from setting out through to as-built verification.</p>
+          <div class="tags">
+            <span class="tag">Builders</span>
+            <span class="tag">Architects</span>
+            <span class="tag">Engineers</span>
+          </div>
+          <a href={url('/services')} class="card-link">Measurement Services &rarr;</a>
+        </div>
+
+        <div class="card">
+          <div class="card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/><line x1="9" y1="3" x2="9" y2="21"/><line x1="15" y1="3" x2="15" y2="21"/></svg>
+          </div>
+          <h3>Depictions &amp; CAD / 3D Modelling</h3>
+          <p>Detailed technical drawings, digital terrain models, and spatial mapping for planning, design, and visualisation.</p>
+          <div class="tags">
+            <span class="tag">CAD Drawings</span>
+            <span class="tag">3D Models</span>
+            <span class="tag">Topo Maps</span>
+          </div>
+          <a href={url('/services')} class="card-link">Depictions &amp; CAD / 3D Modelling &rarr;</a>
+        </div>
+
+        <div class="card">
+          <div class="card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3>Land Services</h3>
+          <p>Support for subdivision, consolidation, rezoning, and planning applications — navigating technical requirements so your project moves forward.</p>
+          <div class="tags">
+            <span class="tag">Subdivision</span>
+            <span class="tag">Rezoning</span>
+            <span class="tag">Developers</span>
+          </div>
+          <a href={url('/services')} class="card-link">Land Services &rarr;</a>
+        </div>
+
+        <div class="card">
+          <div class="card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+          </div>
+          <h3>Asset Management</h3>
+          <p>Record, verify, and manage spatial data of land, buildings, and infrastructure assets for municipalities, utilities, and large portfolios.</p>
+          <div class="tags">
+            <span class="tag">Municipalities</span>
+            <span class="tag">Utilities</span>
+            <span class="tag">Asset Register</span>
+          </div>
+          <a href={url('/services')} class="card-link">Asset Management &rarr;</a>
+        </div>
+      </div>
+
+      <div style="margin-top:36px;text-align:center;">
+        <a href={url('/services')} class="btn btn--outline-red">View All Services &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── ABOUT PREVIEW ── -->
+  <section class="section section--alt" aria-labelledby="about-heading">
+    <div class="container">
+      <div class="about-split">
+        <div class="about-visual">
+          <span class="label label--light">Est. 30+ Years</span>
+          <h3>Built on Precision and Professionalism</h3>
+          <p>
+            We sell services by listening to our client's needs, arriving at a problem definition and assignment proposal — then delivering exceptional results efficiently.
+          </p>
+          <blockquote style="border-left:3px solid rgba(232,112,112,.6);padding:12px 18px;margin:0 0 24px;font-style:italic;font-size:14px;color:rgba(255,255,255,.7);line-height:1.7;">"We will go to lengths to explain and share the details of job processes and their significance in maintaining or enhancing the value of your property."</blockquote>
+          <ul class="about-checklist" aria-label="Key credentials">
+            <li class="check-item">
+              <div class="check-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <span>SAGC Registered Professional Land Surveyors</span>
+            </li>
+            <li class="check-item">
+              <div class="check-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <span>Calibrated, modern survey equipment</span>
+            </li>
+            <li class="check-item">
+              <div class="check-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <span>Ongoing staff development and mentorship</span>
+            </li>
+            <li class="check-item">
+              <div class="check-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <span>Serving all of Cape Town and the Western Cape</span>
+            </li>
+          </ul>
+          <div style="margin-top:28px;">
+            <a href={url('/about')} class="btn btn--outline-white">About Us &rarr;</a>
+          </div>
+        </div>
+
+        <div>
+          <span class="label">Why Choose Us</span>
+          <h2 class="section-title" id="about-heading">Precision You Can Build On</h2>
+          <div class="red-bar"></div>
+          <ol class="about-points" aria-label="Why choose us">
+            <li class="about-point">
+              <div class="about-num" aria-hidden="true">1</div>
+              <div>
+                <h3>Accurate, Certified Results</h3>
+                <p>Every survey conducted to SAGC professional standards and signed by a registered surveyor — results you can present to any authority.</p>
+              </div>
+            </li>
+            <li class="about-point">
+              <div class="about-num" aria-hidden="true">2</div>
+              <div>
+                <h3>Modern Equipment &amp; Software</h3>
+                <p>We invest continuously in the latest total stations, GPS/GNSS receivers, and CAD/GIS software to keep accuracy at the highest level.</p>
+              </div>
+            </li>
+            <li class="about-point">
+              <div class="about-num" aria-hidden="true">3</div>
+              <div>
+                <h3>Prompt, Responsive Service</h3>
+                <p>Time-sensitive projects need timely answers. Expect fast turnaround, clear communication, and no surprises.</p>
+              </div>
+            </li>
+            <li class="about-point">
+              <div class="about-num" aria-hidden="true">4</div>
+              <div>
+                <h3>Deep Local Knowledge</h3>
+                <p>30+ years operating in the Western Cape means we understand local land tenure, municipal requirements, and regional terrain.</p>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── TESTIMONIALS ── -->
+  <section class="section" aria-labelledby="testi-heading">
+    <div class="container">
+      <span class="label">Client Feedback</span>
+      <h2 class="section-title" id="testi-heading">What Our Clients Say</h2>
+      <p class="section-sub">From homeowners to large developers — accuracy and professionalism on every project.</p>
+      <div class="testi-grid">
+        <div class="testi-card">
+          <div class="testi-stars" aria-label="5 stars">★★★★★</div>
+          <blockquote>"Biff Lewis Geomatics handled our property subdivision with complete professionalism. The drawings were accurate, the report was clear, and the turnaround time was impressive."</blockquote>
+          <div class="testi-author">
+            <div class="testi-avatar" aria-hidden="true">JM</div>
+            <div><div class="testi-name">Johan M.</div><div class="testi-role">Property Developer, Cape Town</div></div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars" aria-label="5 stars">★★★★★</div>
+          <blockquote>"We needed an engineering survey under tight construction deadlines. The team was on site on time, communicated clearly, and delivered certified results our engineers could use immediately."</blockquote>
+          <div class="testi-author">
+            <div class="testi-avatar" aria-hidden="true">SR</div>
+            <div><div class="testi-name">Sandra R.</div><div class="testi-role">Project Manager, Western Cape</div></div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars" aria-label="5 stars">★★★★★</div>
+          <blockquote>"I was involved in a boundary dispute and needed a registered surveyor urgently. Biff Lewis responded same day, inspected the site, and resolved the matter with a professional certified depiction."</blockquote>
+          <div class="testi-author">
+            <div class="testi-avatar" aria-hidden="true">DV</div>
+            <div><div class="testi-name">David V.</div><div class="testi-role">Homeowner, Observatory</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA BANNER ── -->
+  <CtaBanner
+    heading="Ready to Start Your Survey Project?"
+    body="Get in touch with our team — we'll listen, advise, and provide a written quote promptly."
+    btn1={{ text: 'Get a Survey Quote', href: url('/contact') }}
+    btn2={{ text: 'View Our Services',  href: url('/services') }}
+  />
+
+</Layout>
+
+<style>
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    min-height: 640px;
+    display: flex;
+    align-items: center;
+    background-color: var(--purple);
+    overflow: hidden;
+  }
+  .hero-photo {
+    position: absolute;
+    inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+  .hero-bg-lines {
+    position: absolute; inset: 0; pointer-events: none;
+    background:
+      repeating-radial-gradient(
+        ellipse 580px 360px at 72% 35%,
+        transparent 0, transparent 24px,
+        rgba(185,45,145,.14) 24px, rgba(185,45,145,.14) 25px
+      ),
+      repeating-radial-gradient(
+        ellipse 340px 440px at 16% 72%,
+        transparent 0, transparent 18px,
+        rgba(185,45,145,.10) 18px, rgba(185,45,145,.10) 19px
+      ),
+      repeating-linear-gradient(-45deg, transparent, transparent 40px, rgba(139,26,26,.05) 40px, rgba(139,26,26,.05) 41px),
+      linear-gradient(160deg, rgba(38,4,32,.80) 0%, rgba(20,4,18,.72) 100%);
+  }
+  .hero-red-shape {
+    position: absolute;
+    left: -80px; bottom: -80px;
+    width: 500px; height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(139,26,26,.25) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero .container { position: relative; z-index: 2; padding: 72px 24px; }
+  .hero-inner { max-width: 700px; }
+
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: rgba(139,26,26,.25);
+    border: 1px solid rgba(139,26,26,.4);
+    border-radius: 40px;
+    padding: 6px 16px;
+    font-size: 12px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase;
+    color: rgba(255,255,255,.8);
+    margin-bottom: 28px;
+  }
+  .eyebrow-dot { width: 7px; height: 7px; background: var(--red); border-radius: 50%; }
+
+  .hero h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(28px, 5.5vw, 54px);
+    font-weight: 800;
+    color: var(--white);
+    line-height: 1.12;
+    margin-bottom: 24px;
+  }
+  .hero h1 span { color: #e87070; }
+
+  .hero-sub {
+    font-size: 17px;
+    color: rgba(255,255,255,.75);
+    line-height: 1.75;
+    margin-bottom: 36px;
+    max-width: 590px;
+  }
+  .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+
+  .hero-trust {
+    margin-top: 56px;
+    padding-top: 32px;
+    border-top: 1px solid rgba(255,255,255,.12);
+    display: flex; gap: 40px; flex-wrap: wrap;
+  }
+  .trust-item .t-num  { font-family: 'Montserrat', sans-serif; font-size: 28px; font-weight: 800; color: #e87070; }
+  .trust-item .t-label{ font-size: 12px; color: rgba(255,255,255,.55); margin-top: 2px; }
+
+  /* ── STATS BAR ── */
+  .stats-bar {
+    background: var(--white);
+    border-bottom: 1px solid var(--grey-light);
+    box-shadow: 0 3px 14px rgba(0,0,0,.08);
+  }
+  .stats-bar .container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .stat-cell {
+    display: flex; align-items: center; gap: 14px;
+    padding: 24px 20px;
+    border-right: 1px solid var(--grey-light);
+  }
+  .stat-cell:last-child { border-right: none; }
+  .stat-ico {
+    width: 46px; height: 46px; flex-shrink: 0;
+    background: var(--red-light);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .stat-ico svg { width: 22px; height: 22px; color: var(--red); }
+  .stat-num  { font-family: 'Montserrat', sans-serif; font-size: 24px; font-weight: 800; color: var(--charcoal); line-height: 1; }
+  .stat-desc { font-size: 12.5px; color: var(--grey); margin-top: 2px; }
+
+  /* ── SERVICES GRID ── */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 22px;
+    margin-top: 44px;
+  }
+
+  /* ── ABOUT SPLIT ── */
+  .about-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+  }
+  .about-visual {
+    background-color: var(--purple);
+    background-image:
+      repeating-radial-gradient(ellipse 420px 280px at 75% 30%,transparent 0,transparent 20px,var(--purple-line) 20px,var(--purple-line) 21px),
+      repeating-radial-gradient(ellipse 240px 320px at 15% 75%,transparent 0,transparent 14px,var(--purple-line) 14px,var(--purple-line) 15px),
+      linear-gradient(145deg,var(--purple-dark) 0%,var(--purple) 60%);
+    border-radius: 8px;
+    padding: 44px 40px;
+    color: var(--white);
+    position: relative;
+    overflow: hidden;
+  }
+  .about-visual::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: repeating-linear-gradient(-45deg, transparent, transparent 28px, rgba(139,26,26,.1) 28px, rgba(139,26,26,.1) 29px);
+  }
+  .about-visual > * { position: relative; z-index: 1; }
+  .about-visual h3 { font-family: 'Montserrat', sans-serif; font-size: 21px; font-weight: 800; color: var(--white); margin-bottom: 14px; }
+  .about-visual p  { font-size: 14px; color: rgba(255,255,255,.65); line-height: 1.75; margin-bottom: 24px; }
+  .about-checklist { display: flex; flex-direction: column; gap: 12px; list-style: none; padding: 0; }
+  .check-item { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: rgba(255,255,255,.75); }
+  .check-icon { width: 20px; height: 20px; background: var(--red); border-radius: 50%; flex-shrink: 0; display: flex; align-items: center; justify-content: center; margin-top: 2px; }
+  .check-icon svg { width: 10px; height: 10px; color: white; }
+
+  .about-points { display: flex; flex-direction: column; gap: 26px; list-style: none; padding: 0; }
+  .about-point  { display: flex; gap: 16px; }
+  .about-num {
+    flex-shrink: 0;
+    width: 38px; height: 38px;
+    background: var(--red);
+    color: var(--white);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px; font-weight: 800;
+    margin-top: 2px;
+  }
+  .about-point h3 { font-size: 15px; font-weight: 700; color: var(--charcoal); margin-bottom: 5px; }
+  .about-point p  { font-size: 14px; color: var(--mid); }
+
+  /* ── TESTIMONIALS ── */
+  .testi-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+    margin-top: 44px;
+  }
+  .testi-card {
+    background: var(--white);
+    border: 1px solid var(--grey-light);
+    border-radius: 6px;
+    padding: 28px;
+  }
+  .testi-stars { color: var(--red); font-size: 16px; margin-bottom: 12px; }
+  .testi-card blockquote { font-size: 14px; color: var(--mid); line-height: 1.75; font-style: italic; margin-bottom: 20px; }
+  .testi-author { display: flex; align-items: center; gap: 12px; }
+  .testi-avatar {
+    width: 40px; height: 40px; border-radius: 50%;
+    background: var(--charcoal);
+    color: #e87070;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px; font-weight: 800;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .testi-name { font-size: 14px; font-weight: 700; color: var(--charcoal); }
+  .testi-role { font-size: 12px; color: var(--grey); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 1024px) {
+    .about-split { grid-template-columns: 1fr; gap: 36px; }
+    .testi-grid  { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 768px) {
+    .stats-bar .container { grid-template-columns: 1fr 1fr; }
+    .stat-cell:nth-child(2) { border-right: none; }
+    .testi-grid { grid-template-columns: 1fr; }
+    .hero-trust { gap: 24px; }
+  }
+  @media (max-width: 480px) {
+    .stats-bar .container { grid-template-columns: 1fr; }
+    .stat-cell { border-right: none; border-bottom: 1px solid var(--grey-light); }
+    .stat-cell:last-child { border-bottom: none; }
+  }
+</style>

@@ -1,0 +1,66 @@
+---
+import NavLogo from './NavLogo.astro';
+import { url } from '../utils/url';
+---
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand-logo">
+          <NavLogo variant="footer" class="footer-logo" />
+          <div>
+            <div class="footer-brand-name">Biff Lewis Geomatics</div>
+            <div class="footer-brand-sub">Professional Land Surveyors</div>
+          </div>
+        </div>
+        <p class="footer-desc">
+          Professional land surveying, property boundary, engineering, and geomatics
+          services serving Cape Town and the Western Cape for over 30 years.
+        </p>
+        <div class="footer-badges">
+          <span class="footer-badge">SAGC Registered</span>
+          <span class="footer-badge">Cape Town</span>
+          <span class="footer-badge">Western Cape</span>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h2>Services</h2>
+        <ul>
+          <li><a href={url('/services')}>Boundary &amp; Property Surveys</a></li>
+          <li><a href={url('/services')}>Construction &amp; Engineering</a></li>
+          <li><a href={url('/services')}>CAD &amp; 3D Modelling</a></li>
+          <li><a href={url('/services')}>Land Development</a></li>
+          <li><a href={url('/services')}>Asset &amp; Infrastructure Mapping</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h2>Company</h2>
+        <ul>
+          <li><a href={url('/about')}>About Us</a></li>
+          <li><a href={url('/gallery')}>Gallery</a></li>
+          <li><a href={url('/contact')}>Get a Quote</a></li>
+          <li><a href={url('/contact')}>Contact Us</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h2>Contact</h2>
+        <ul>
+          <li><a href="tel:+27214423480">021 442 3480</a></li>
+          <li><a href="tel:+27786678552">+27 78 667 8552</a></li>
+          <li><a href="mailto:info@blgeomatics.co.za">info@blgeomatics.co.za</a></li>
+          <li><a href={url('/contact')}>A11 Waverley Court, 7 Kotzee Road, Observatory 7925</a></li>
+          <li><a href="https://www.facebook.com/bifflewisgeomatics" target="_blank" rel="noopener">Facebook</a></li>
+          <li><a href="https://www.instagram.com/bifflewisgeomatics" target="_blank" rel="noopener">Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2024 Biff Lewis Geomatics. Professional Land Surveyors, Cape Town &amp; Western Cape.</span>
+      <span>Land surveyor Cape Town · Property survey Western Cape · Cadastral surveyor</span>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,20 @@
+---
+import { Image } from 'astro:assets';
+import logoSrc from '../assets/logo.jpg';
+
+interface Props {
+  variant: 'header' | 'footer';
+  class?: string;
+}
+const { variant, class: className = '' } = Astro.props;
+---
+<Image
+  src={logoSrc}
+  alt="Biff Lewis Geomatics logo"
+  width={48}
+  height={48}
+  class={`nav-logo ${className}`}
+  style="object-fit: contain; border-radius: 4px;"
+  loading="eager"
+  decoding="async"
+/>

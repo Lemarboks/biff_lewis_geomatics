@@ -1,0 +1,583 @@
+---
+import Layout from '../layouts/Layout.astro';
+import CtaBanner from '../components/CtaBanner.astro';
+import { Picture } from 'astro:assets';
+import { url } from '../utils/url';
+import heroSubSrc from '../assets/gallery/hero-sub.jpg';
+
+// ── Gallery image imports ──────────────────────────────────────────────────
+// TODO (next agent): replace each SVG import below with the corresponding
+// real photo. Keep the same variable name so the GalleryItem array needs
+// no other changes. Recommended format: WebP, 800×600 minimum.
+import imgBoundary1    from '../assets/gallery/residential-boundary.jpg';
+import imgBoundary2    from '../assets/gallery/boundary-dispute.jpg';
+import imgBoundary3    from '../assets/gallery/commercial-depiction.jpg';
+import imgEngineering1 from '../assets/gallery/construction-setting-out.jpg';
+import imgEngineering2 from '../assets/gallery/as-built-infrastructure.jpg';
+import imgCad1         from '../assets/gallery/topographic-cad.png';
+import imgCad2         from '../assets/gallery/terrain-3d-model.png';
+import imgDevelopment1 from '../assets/gallery/residential-subdivision.jpg';
+import imgAsset1       from '../assets/gallery/municipal-asset.jpg';
+
+import type { ImageMetadata } from 'astro';
+
+type Category = 'boundary' | 'engineering' | 'cad' | 'development' | 'asset';
+
+interface GalleryItem {
+  title: string;
+  location: string;
+  subtitle: string;
+  category: Category;
+  catLabel: string;
+  catColor: string;
+  thumbClass: string;
+  description: string;
+  image: ImageMetadata;
+}
+
+const items: GalleryItem[] = [
+  {
+    title: 'Residential Boundary Survey',
+    location: 'Claremont, Cape Town',
+    subtitle: 'Property beacon establishment and certification',
+    category: 'boundary',
+    catLabel: 'Boundary',
+    catColor: 'var(--red)',
+    thumbClass: 'thumb-boundary',
+    description: 'Survey of a residential property to establish and peg the four corner beacons in accordance with the registered Surveyor General diagram. Delivered a certified field sheet confirming beacon positions.',
+    image: imgBoundary1,
+  },
+  {
+    title: 'Boundary Dispute Survey',
+    location: 'Wynberg, Cape Town',
+    subtitle: 'Adjacent property boundary re-establishment',
+    category: 'boundary',
+    catLabel: 'Boundary',
+    catColor: 'var(--red)',
+    thumbClass: 'thumb-boundary',
+    description: 'Re-establishment of boundary beacons for two adjacent properties involved in a boundary dispute. Certified professional opinion prepared confirming the correct boundary position in terms of the Surveyor General records.',
+    image: imgBoundary2,
+  },
+  {
+    title: 'Commercial Property Depiction',
+    location: 'Bellville, Western Cape',
+    subtitle: 'Building-to-boundary depiction for plan approval',
+    category: 'boundary',
+    catLabel: 'Depiction',
+    catColor: 'var(--red)',
+    thumbClass: 'thumb-boundary',
+    description: 'Preparation of a formal depiction showing the position of an existing commercial building relative to the registered building lines and property boundaries. Required for municipal building plan approval.',
+    image: imgBoundary3,
+  },
+  {
+    title: 'Construction Setting Out',
+    location: 'Muizenberg, Cape Town',
+    subtitle: 'Residential development column grid & levels',
+    category: 'engineering',
+    catLabel: 'Engineering',
+    catColor: '#2e6b3e',
+    thumbClass: 'thumb-engineering',
+    description: 'Setting out of foundation positions, column grids, and floor levels for a new residential development. Co-ordinated with the structural engineer and contractor to ensure correct positioning throughout the construction phase.',
+    image: imgEngineering1,
+  },
+  {
+    title: 'As-Built Infrastructure Survey',
+    location: 'Stellenbosch, Western Cape',
+    subtitle: 'Stormwater & road as-built for municipal handover',
+    category: 'engineering',
+    catLabel: 'Engineering',
+    catColor: '#2e6b3e',
+    thumbClass: 'thumb-engineering',
+    description: 'As-built survey of a new stormwater and road infrastructure project — confirming constructed positions against the approved design, and producing certified as-built drawings for municipal handover.',
+    image: imgEngineering2,
+  },
+  {
+    title: 'Topographic Survey & CAD Map',
+    location: 'Somerset West, Western Cape',
+    subtitle: '2ha site survey with 0.5m contours, georeferenced CAD',
+    category: 'cad',
+    catLabel: 'CAD / Topo',
+    catColor: '#3a4a8b',
+    thumbClass: 'thumb-cad',
+    description: "Detailed topographic survey of a 2-hectare site, including all surface features, contours at 0.5m intervals, trees, buildings, and underground service positions. Delivered as a georeferenced AutoCAD drawing for the client's architect and engineer.",
+    image: imgCad1,
+  },
+  {
+    title: '3D Digital Terrain Model',
+    location: 'Paarl, Western Cape',
+    subtitle: 'DTM for drainage design — commercial development',
+    category: 'cad',
+    catLabel: '3D Model',
+    catColor: '#3a4a8b',
+    thumbClass: 'thumb-cad',
+    description: '3D Digital Terrain Model (DTM) produced from survey data for a commercial development site. Used by the drainage engineer to model stormwater runoff and design the drainage system. Delivered in CAD and TIN surface format.',
+    image: imgCad2,
+  },
+  {
+    title: 'Residential Subdivision Survey',
+    location: 'Kuils River, Western Cape',
+    subtitle: 'Subdivision of erf into four units — SG approved',
+    category: 'development',
+    catLabel: 'Development',
+    catColor: '#6b4a1e',
+    thumbClass: 'thumb-development',
+    description: 'Survey and subdivision diagram preparation for the subdivision of a large residential erf into four separate units. Diagrams lodged with the Western Cape Surveyor General and approved for registration at the Deeds Registry.',
+    image: imgDevelopment1,
+  },
+  {
+    title: 'Municipal Infrastructure Asset Survey',
+    location: 'Hermanus, Western Cape',
+    subtitle: 'Water reticulation network GIS data capture',
+    category: 'asset',
+    catLabel: 'Asset Mapping',
+    catColor: 'var(--red)',
+    thumbClass: 'thumb-asset',
+    description: "Spatial data capture of the water reticulation network for a local municipality — manholes, pipes, valves, and meters located, surveyed, and captured into a GIS database. Delivered as a spatially accurate asset register for the municipality's operations department.",
+    image: imgAsset1,
+  },
+];
+
+const filterGroups: { label: string; value: string }[] = [
+  { label: 'All Projects',              value: 'all' },
+  { label: 'Boundary & Property',        value: 'boundary' },
+  { label: 'Engineering & Construction', value: 'engineering' },
+  { label: 'CAD & 3D',                  value: 'cad' },
+  { label: 'Land Development',          value: 'development' },
+  { label: 'Asset Mapping',             value: 'asset' },
+];
+---
+
+<Layout
+  title="Gallery | Biff Lewis Geomatics – Land Surveyors Cape Town"
+  description="Gallery of land surveying projects by Biff Lewis Geomatics — boundary surveys, topographic surveys, CAD drawings, 3D models, and engineering survey work across Cape Town and the Western Cape."
+>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <img class="page-hero-photo" src={heroSubSrc.src} alt="" aria-hidden="true" loading="eager" decoding="async" />
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href={url('/')}>Home</a>
+        <span class="breadcrumb-sep" aria-hidden="true">›</span>
+        <span aria-current="page">Gallery</span>
+      </nav>
+      <h1>Project Gallery</h1>
+      <p>Examples of boundary surveys, engineering work, CAD drawings, 3D models, and land development projects completed across Cape Town and the Western Cape.</p>
+    </div>
+  </div>
+  <div class="hero-accent-bar"></div>
+
+  <!-- GALLERY SECTION -->
+  <section class="section" aria-labelledby="gallery-heading">
+    <div class="container">
+      <span class="label">Our Work</span>
+      <h2 class="section-title" id="gallery-heading">Survey Projects &amp; Deliverables</h2>
+      <p class="section-sub">A selection of completed survey projects — illustrating the range and quality of work we deliver for our clients.</p>
+
+      <!-- Filter tabs -->
+      <div class="filter-bar" role="group" aria-label="Filter projects by category">
+        {filterGroups.map(({ label, value }) => (
+          <button
+            class:list={['filter-btn', { active: value === 'all' }]}
+            data-filter={value}
+            type="button"
+            aria-pressed={value === 'all' ? 'true' : 'false'}
+          >
+            {label}
+          </button>
+        ))}
+      </div>
+
+      <!-- Gallery grid -->
+      <ul class="gallery-grid" id="galleryGrid" aria-label="Project gallery">
+        {items.map(item => (
+          <li>
+            <button
+              class="gallery-card"
+              type="button"
+              data-category={item.category}
+              data-title={item.title}
+              data-location={item.location}
+              data-description={item.description}
+              data-image-src={item.image.src}
+              data-image-alt={`Diagram for ${item.title}`}
+              aria-label={`View project details: ${item.title}, ${item.location}`}
+            >
+              <div class={`gallery-thumb ${item.thumbClass}`}>
+                <div class="thumb-inner">
+                  <div class="thumb-grid-overlay" aria-hidden="true"></div>
+                  <Picture
+                    src={item.image}
+                    alt=""
+                    width={400}
+                    height={300}
+                    formats={['avif', 'webp']}
+                    fallbackFormat="png"
+                    quality={76}
+                    sizes="(max-width: 640px) 70vw, (max-width: 1024px) 35vw, 280px"
+                    loading="lazy"
+                    decoding="async"
+                    class="thumb-svg"
+                    pictureAttributes={{ class: 'thumb-picture', 'aria-hidden': 'true' }}
+                  />
+                </div>
+                <span class="gallery-cat" style={`background:${item.catColor}`}>
+                  {item.catLabel}
+                </span>
+                <div class="gallery-overlay" aria-hidden="true">
+                  <svg class="gallery-overlay-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"/>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                    <line x1="11" y1="8" x2="11" y2="14"/>
+                    <line x1="8" y1="11" x2="14" y2="11"/>
+                  </svg>
+                </div>
+              </div>
+              <div class="gallery-info">
+                <h4>{item.title}</h4>
+                <p>{item.subtitle}</p>
+                <div class="location">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+                    <circle cx="12" cy="10" r="3"/>
+                  </svg>
+                  {item.location}
+                </div>
+              </div>
+            </button>
+          </li>
+        ))}
+      </ul>
+
+      <!-- Types strip -->
+      <div class="type-strip" aria-label="Survey types we cover">
+        <div class="type-item">
+          <div class="type-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+          <h5>Boundary Surveys</h5>
+          <p>Property pegging &amp; depictions</p>
+        </div>
+        <div class="type-item">
+          <div class="type-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/></svg></div>
+          <h5>Engineering Surveys</h5>
+          <p>Setting out &amp; as-builts</p>
+        </div>
+        <div class="type-item">
+          <div class="type-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="3" x2="9" y2="21"/></svg></div>
+          <h5>CAD &amp; 3D Models</h5>
+          <p>Topo maps &amp; digital models</p>
+        </div>
+        <div class="type-item">
+          <div class="type-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+          <h5>Land Development</h5>
+          <p>Subdivision &amp; general plans</p>
+        </div>
+        <div class="type-item">
+          <div class="type-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/></svg></div>
+          <h5>Asset Mapping</h5>
+          <p>GIS &amp; infrastructure records</p>
+        </div>
+      </div>
+
+      <div style="margin-top:48px;text-align:center;">
+        <p style="font-size:15px;color:var(--mid);margin-bottom:20px;">Ready to discuss your project? Get in touch for a tailored proposal.</p>
+        <a href={url('/contact')} class="btn btn--red">Request a Survey Quote</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- LIGHTBOX (native <dialog> for built-in focus trap + Esc) -->
+  <dialog
+    id="lightbox"
+    class="lightbox"
+    aria-labelledby="lightboxTitle"
+    aria-describedby="lightboxDesc"
+  >
+    <div class="lightbox-inner">
+      <button class="lightbox-close" id="lightboxClose" type="button" aria-label="Close project details">
+        ✕
+      </button>
+      <div class="lightbox-thumb">
+        <!-- Image is set dynamically by the script -->
+        <img id="lightboxImg" src="" alt="" width="400" height="300" />
+      </div>
+      <div class="lightbox-body">
+        <h3 id="lightboxTitle"></h3>
+        <p class="lightbox-loc" id="lightboxLoc"></p>
+        <p id="lightboxDesc"></p>
+        <div style="margin-top:20px;">
+          <a href={url('/contact')} class="btn btn--red" style="font-size:13px;padding:10px 20px;">Request Similar Work</a>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- CTA -->
+  <CtaBanner
+    heading="Have a Project to Survey?"
+    body="Contact us with your requirements — we'll advise on the right survey and provide a written quote promptly."
+    btn1={{ text: 'Get a Survey Quote', href: url('/contact') }}
+    btn2={{ text: 'View All Services',  href: url('/services') }}
+  />
+
+</Layout>
+
+<style>
+  /* ── Filter tabs ── */
+  .filter-bar {
+    display: flex; gap: 8px; flex-wrap: wrap;
+    margin-bottom: 36px;
+  }
+  .filter-btn {
+    padding: 9px 20px;
+    border: 1px solid var(--grey-light);
+    border-radius: 30px;
+    font-size: 13.5px; font-weight: 600;
+    color: var(--mid);
+    background: var(--white);
+    cursor: pointer;
+    transition: var(--transition);
+    font-family: inherit;
+  }
+  .filter-btn:hover,
+  .filter-btn.active,
+  .filter-btn[aria-pressed="true"] {
+    background: var(--red);
+    color: var(--white);
+    border-color: var(--red);
+  }
+
+  /* ── Gallery grid ── */
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    list-style: none;
+    padding: 0;
+  }
+  .gallery-grid > li { display: contents; }
+
+  .gallery-card {
+    width: 100%;
+    background: var(--white);
+    border: 1px solid var(--grey-light);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: var(--transition);
+    cursor: pointer;
+    text-align: left;
+    padding: 0;
+    font-family: inherit;
+  }
+  .gallery-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-3px); }
+  .gallery-card.hidden { display: none; }
+
+  .gallery-thumb {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 4/3;
+    background: var(--grey-bg);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .thumb-boundary   { background: linear-gradient(135deg, #f0f0f0 0%, #e0e0e0 100%); }
+  .thumb-engineering{ background: linear-gradient(135deg, #e8f0e8 0%, #d0e0d0 100%); }
+  .thumb-cad        { background: linear-gradient(135deg, #e8eaf0 0%, #d0d4e8 100%); }
+  .thumb-development{ background: linear-gradient(135deg, #f0ede8 0%, #e0d8d0 100%); }
+  .thumb-asset      { background: linear-gradient(135deg, #f0e8e8 0%, #e8d8d8 100%); }
+
+  .thumb-inner {
+    width: 100%; height: 100%;
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+  }
+  .thumb-picture {
+    width: 100%; height: 100%;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .thumb-svg {
+    width: 100%; height: 100%;
+    opacity: 1;
+    object-fit: cover;
+  }
+  .thumb-grid-overlay {
+    display: none;
+  }
+
+  .gallery-overlay {
+    position: absolute; inset: 0;
+    background: rgba(42,42,42,.7);
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0;
+    transition: opacity .2s;
+  }
+  .gallery-card:hover .gallery-overlay,
+  .gallery-card:focus-visible .gallery-overlay { opacity: 1; }
+  .gallery-overlay-icon { color: white; width: 36px; height: 36px; }
+
+  .gallery-cat {
+    position: absolute; top: 12px; left: 12px;
+    color: white;
+    font-size: 10.5px; font-weight: 700;
+    letter-spacing: .06em; text-transform: uppercase;
+    padding: 4px 10px; border-radius: 20px;
+  }
+
+  .gallery-info { padding: 18px 20px; }
+  .gallery-info h4 { font-size: 15px; font-weight: 700; color: var(--charcoal); margin-bottom: 4px; }
+  .gallery-info p  { font-size: 13px; color: var(--grey); }
+  .gallery-info .location {
+    display: flex; align-items: center; gap: 5px;
+    font-size: 12px; color: var(--grey);
+    margin-top: 8px;
+  }
+  .gallery-info .location svg { width: 12px; height: 12px; color: var(--red); flex-shrink: 0; }
+
+  /* ── Lightbox (native dialog) ── */
+  .lightbox {
+    border: none;
+    padding: 0;
+    background: transparent;
+    max-width: 680px;
+    width: 90%;
+    overflow: visible;
+  }
+  .lightbox::backdrop { background: rgba(0,0,0,.85); }
+
+  .lightbox-inner {
+    background: var(--white);
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+  }
+  .lightbox-close {
+    position: absolute;
+    top: 12px; right: 12px;
+    z-index: 10;
+    width: 36px; height: 36px;
+    background: white;
+    border: 1px solid var(--grey-light);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+    font-size: 16px;
+    color: var(--charcoal);
+    box-shadow: var(--shadow);
+    transition: background .15s;
+    font-family: inherit;
+  }
+  .lightbox-close:hover { background: var(--grey-bg); }
+
+  .lightbox-thumb {
+    aspect-ratio: 16/9;
+    background: var(--grey-bg);
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+  }
+  .lightbox-thumb img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    opacity: 1;
+  }
+  .lightbox-body { padding: 28px; }
+  .lightbox-body h3 { font-family: 'Montserrat', sans-serif; font-size: 20px; font-weight: 800; color: var(--charcoal); margin-bottom: 8px; }
+  .lightbox-loc { font-size: 12px; color: var(--red); margin-bottom: 12px; font-weight: 600; }
+  .lightbox-body p  { font-size: 14px; color: var(--mid); line-height: 1.7; }
+
+  /* ── Type strip ── */
+  .type-strip {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+    margin-top: 48px;
+    padding-top: 40px;
+    border-top: 1px solid var(--grey-light);
+  }
+  .type-item { text-align: center; }
+  .type-icon {
+    width: 50px; height: 50px;
+    background: var(--red-light);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 12px;
+  }
+  .type-icon svg { width: 24px; height: 24px; color: var(--red); }
+  .type-item h5 { font-size: 13px; font-weight: 700; color: var(--charcoal); margin-bottom: 4px; }
+  .type-item p  { font-size: 12px; color: var(--grey); }
+
+  /* ── Responsive ── */
+  @media (max-width: 1024px) {
+    .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+    .type-strip   { grid-template-columns: repeat(3, 1fr); }
+  }
+  @media (max-width: 640px) {
+    .gallery-grid { grid-template-columns: 1fr; }
+    .type-strip   { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+
+<script>
+  // ── Category filter ────────────────────────────────────────────────────────
+  const filterBtns = document.querySelectorAll<HTMLButtonElement>('.filter-btn');
+  const galleryCards = document.querySelectorAll<HTMLButtonElement>('.gallery-card');
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const filter = btn.dataset.filter ?? 'all';
+
+      filterBtns.forEach(b => {
+        const isActive = b === btn;
+        b.classList.toggle('active', isActive);
+        b.setAttribute('aria-pressed', String(isActive));
+      });
+
+      galleryCards.forEach(card => {
+        const show = filter === 'all' || card.dataset.category === filter;
+        card.classList.toggle('hidden', !show);
+        // keep hidden cards out of tab order
+        card.setAttribute('tabindex', show ? '0' : '-1');
+      });
+    });
+  });
+
+  // ── Lightbox (native <dialog>) ────────────────────────────────────────────
+  const lightbox    = document.getElementById('lightbox')    as HTMLDialogElement;
+  const lightboxImg = document.getElementById('lightboxImg') as HTMLImageElement;
+  const lightboxTitle = document.getElementById('lightboxTitle') as HTMLElement;
+  const lightboxLoc   = document.getElementById('lightboxLoc')   as HTMLElement;
+  const lightboxDesc  = document.getElementById('lightboxDesc')  as HTMLElement;
+  const closeBtn = document.getElementById('lightboxClose') as HTMLButtonElement;
+
+  let lastFocused: HTMLButtonElement | null = null;
+
+  function openLightbox(card: HTMLButtonElement): void {
+    const { title = '', location = '', description = '', imageSrc = '', imageAlt = '' } = card.dataset;
+    lastFocused = card;
+    lightboxTitle.textContent = title;
+    lightboxLoc.textContent   = location;
+    lightboxDesc.textContent  = description;
+    lightboxImg.src = imageSrc;
+    lightboxImg.alt = imageAlt;
+    lightbox.showModal();
+    closeBtn.focus();
+  }
+
+  function closeLightbox(): void {
+    lightbox.close();
+    lastFocused?.focus();
+  }
+
+  galleryCards.forEach(card => {
+    card.addEventListener('click', () => openLightbox(card));
+  });
+
+  closeBtn.addEventListener('click', closeLightbox);
+
+  // Close when clicking the backdrop (outside the lightbox-inner)
+  lightbox.addEventListener('click', (e: MouseEvent) => {
+    if (e.target === lightbox) closeLightbox();
+  });
+
+  // Native <dialog> already handles Esc; still reset focus on close
+  lightbox.addEventListener('close', () => {
+    lastFocused?.focus();
+  });
+</script>
